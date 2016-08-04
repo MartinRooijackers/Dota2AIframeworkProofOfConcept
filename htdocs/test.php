@@ -6,7 +6,7 @@
      //TODO: use a Pipe or Sockets for interprocess communication
      error_reporting(E_ALL ^ E_WARNING);
 
-     $usePHPonly = false;
+     $usePHPonly = true;
      if(  $usePHPonly  == true ){
        if ($_GET["hpvalue"] < 400){
          echo "RETREAT";
