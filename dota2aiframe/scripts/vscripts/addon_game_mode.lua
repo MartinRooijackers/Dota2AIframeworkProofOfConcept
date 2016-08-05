@@ -89,8 +89,9 @@ print( "GET response:\n" )
 end )
 --]]
     --  for hero in HeroList:GetAllHeroes() do
+    -- and (GetFrameCount() > 1800
     for key, hero in pairs(HeroList:GetAllHeroes()) do
-      if (hero:GetTeamNumber() == DOTA_TEAM_BADGUYS) and (GetFrameCount() > 1900) then
+      if (hero:GetTeamNumber() == DOTA_TEAM_BADGUYS) then
         if hero:GetHealth() == hero:GetMaxHealth() then
         	--print( hero:GetEntityIndex() )
           if not (hero:IsAttacking()) then
@@ -98,7 +99,9 @@ end )
           end
         else 
 
-    CreateHTTPRequest( "GET", "http://192.168.1.189/test.php?hpvalue=" .. hero:GetHealth() .. "&unitid=" .. hero:GetEntityIndex() ):Send( function( result )
+    --local serverIP = "http://192.168.1.189" --use this if somehow the HTTPloc doesnt work
+    local serverHTTPLoc = "http://localhost/"
+    CreateHTTPRequest( "GET", serverHTTPLoc .. "test.php?hpvalue=" .. hero:GetHealth() .. "&unitid=" .. hero:GetEntityIndex() ):Send( function( result )
     
     print( "GET response:\n" )
 	for k,v in pairs( result ) do
